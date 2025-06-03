@@ -1,0 +1,53 @@
+ls@DESKTOP-EJRP3Q0:~/TP1-devops/TP1-devops$ docker images
+REPOSITORY              TAG       IMAGE ID       CREATED         SIZE
+nginx                   latest    a830707172e8   6 weeks ago     192MB
+phpmyadmin/phpmyadmin   latest    0276a66ce322   4 months ago    571MB
+hello-world             latest    74cc54e27dc4   4 months ago    10.1kB
+mysql                   5.7       5107333e08a8   17 months ago   501MB
+ls@DESKTOP-EJRP3Q0:~/TP1-devops/TP1-devops$ nano etap2.text
+ls@DESKTOP-EJRP3Q0:~/TP1-devops/TP1-devops$ docker run -d --name mon-web -p 8080:80 -v $(pwd)/index.html:/usr/local/apache2/htdocs/index.html httpd
+Unable to find image 'httpd:latest' locally
+latest: Pulling from library/httpd
+61320b01ae5e: Pull complete
+be60498bea0a: Pull complete
+4f4fb700ef54: Pull complete
+8f86928406fd: Pull complete
+162ef2c73af1: Pull complete
+8dbbd44856ed: Pull complete
+Digest: sha256:09cb4b94edaaa796522c545328b62e9a0db60315c7be9f2b4e02204919926405
+Status: Downloaded newer image for httpd:latest
+0ae0be8f5c7a2f75fead8fc5366155fb1d1357c7dd155a4698abecc6ef726c5b
+docker: Error response from daemon: failed to create task for container: failed to create shim task: OCI runtime create failed: runc create failed: unable to start container process: error during container init: error mounting "/home/ls/TP1-devops/TP1-devops/index.html" to rootfs at "/usr/local/apache2/htdocs/index.html": create mountpoint for /usr/local/apache2/htdocs/index.html mount: cannot create subdirectories in "/var/lib/docker/overlay2/c2cee0c5f9bc09663d3201e416c46594e58b447d3379173eb055a2b822fb0010/merged/usr/local/apache2/htdocs/index.html": not a directory: unknown: Are you trying to mount a directory onto a file (or vice-versa)? Check if the specified host path exists and is the expected type
+
+Run 'docker run --help' for more information
+ls@DESKTOP-EJRP3Q0:~/TP1-devops/TP1-devops$ docker rm -f mon-web
+mon-web
+ls@DESKTOP-EJRP3Q0:~/TP1-devops/TP1-devops$ docker run -d --name mon-web -p 8080:80 httpd
+dfc9d842341303b0d639f8cd70f69d8f275e8618a906a04f44712b1f578a76f5
+ls@DESKTOP-EJRP3Q0:~/TP1-devops/TP1-devops$ docker cp index.html mon-web:/usr/local/apache2/htdocs/index.html
+cannot copy directory
+ls@DESKTOP-EJRP3Q0:~/TP1-devops/TP1-devops$ ^C
+ls@DESKTOP-EJRP3Q0:~/TP1-devops/TP1-devops$ cd TP1-devops/
+-bash: cd: TP1-devops/: No such file or directory
+ls@DESKTOP-EJRP3Q0:~/TP1-devops/TP1-devops$ nano etape2.txt
+ls@DESKTOP-EJRP3Q0:~/TP1-devops/TP1-devops$ git add etape2.txt
+fatal: pathspec 'etape2.txt' did not match any files
+ls@DESKTOP-EJRP3Q0:~/TP1-devops/TP1-devops$ git add .
+ls@DESKTOP-EJRP3Q0:~/TP1-devops/TP1-devops$ git commit -m "
+REPOSITORY              TAG       IMAGE ID       CREATED         SIZE
+nginx                   latest    a830707172e8   6 weeks ago     192MB
+phpmyadmin/phpmyadmin   latest    0276a66ce322   4 months ago    571MB
+hello-world             latest    74cc54e27dc4   4 months ago    10.1kB
+mysql                   5.7       5107333e08a8   17 months ago   501MB"
+[main e31a55a] REPOSITORY              TAG       IMAGE ID       CREATED         SIZE nginx                   latest    a830707172e8   6 weeks ago     192MB phpmyadmin/phpmyadmin   latest    0276a66ce322   4 months ago    571MB hello-world             latest    74cc54e27dc4   4 months ago    10.1kB mysql                   5.7       5107333e08a8   17 months ago   501MB
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+ create mode 100644 etap2.text
+ls@DESKTOP-EJRP3Q0:~/TP1-devops/TP1-devops$ nano etape2
+ls@DESKTOP-EJRP3Q0:~/TP1-devops/TP1-devops$ ls
+README.md  etap2.text  etape1.txt  etape2  index.html
+ls@DESKTOP-EJRP3Q0:~/TP1-devops/TP1-devops$  cd TP1-devops/
+-bash: cd: TP1-devops/: No such file or directory
+ls@DESKTOP-EJRP3Q0:~/TP1-devops/TP1-devops$ cd ..
+ls@DESKTOP-EJRP3Q0:~/TP1-devops$ pwd
+/home/ls/TP1-devops
+ls@DESKTOP-EJRP3Q0:~/TP1-devops$
