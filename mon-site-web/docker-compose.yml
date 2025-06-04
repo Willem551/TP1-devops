@@ -1,0 +1,80 @@
+version: "3.8"
+
+services:
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: tpdb
+      MYSQL_USER: etudiant
+      MYSQL_PASSWORD: secret
+    networks:
+      - backend
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOST: db
+    ports:
+      - "8081:80"
+    networks:
+      - backend
+
+networks:
+  backend:
+version: '3.8'
+
+services:
+  db:
+    image: mysql:5.7
+    container_name: mysql57
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: tpdb
+      MYSQL_USER: etudiant
+      MYSQL_PASSWORD: secret
+    networks:
+      - backend
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: myphpadmin
+    environment:
+      PMA_HOST: db
+    ports:
+      - "8081:80"
+    networks:
+      - backend
+
+networks:
+  backend:
+
+environment:
+  MYSQL_ROOT_PASSWORD: root
+  MYSQL_DATABASE: tpdb
+  MYSQL_USER: etudiant
+  MYSQL_PASSWORD: secret
+
+# docker-compose.yml
+version: '3.8'
+
+services:
+  web:
+    image: praqma/network-multitool
+    networks:
+      - frontend
+
+  app:
+    image: praqma/network-multitool
+    networks:
+      - frontend
+      - backend
+
+  db:
+    image: praqma/network-multitool
+    networks:
+      - backend
+
+networks:
+  frontend:
+  backend:
